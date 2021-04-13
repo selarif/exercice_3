@@ -118,16 +118,18 @@ menu tablet
 	.main-navigation.toggled ul,
 	.main-navigation ul {
 		display: flex;
-		position : static;
+		// position : static; 
 		justify-content: space-around;
 		a[href="#"]::after {
 			display : none;
 		}
-		li:hover ul{
-			display:block;
-			position:absolute;
+		li:hover ul{ // -- Le Sous-Menu (Drop-Down Menu)
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
 			width : 300px;
-			height: 500px;
+			animation: anim-sous-menu .5s both cubic-bezier(0,1.38,1,1); // -- Both permet de garder l'etat final de anim-sous-menu permanent
+			
 		}
 
 		ul {
@@ -136,6 +138,16 @@ menu tablet
 	}
 }
 
+@keyframes anim-sous-menu {
+	0%{
+		opacity: 0;
+		transform: translateX(0) translateY(100px);	
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0) translateY(0px);
+	}
+}
 
 /* --------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------- */
